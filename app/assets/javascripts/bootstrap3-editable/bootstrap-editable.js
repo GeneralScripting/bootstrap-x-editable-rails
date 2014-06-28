@@ -3689,7 +3689,12 @@ $(function(){
         if(options.placeholder) {
             options.select2.placeholder = options.placeholder;
         }
-       
+
+        options.select2.initSelection = function (element, callback) {
+          var value = element.val() || options.placeholder;
+          callback({ id: value, text: value });
+        }
+
         //if not `tags` mode, use source
         if(!options.select2.tags && options.source) {
             var source = options.source;
